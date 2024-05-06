@@ -1,0 +1,51 @@
+.homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+}
+
+.homepage-signup {
+    z-index: 2;
+    font-size: 10vh;
+    top: 100%;
+    color: black;
+    font-family: 'PlayfairDisplay-Regular', PlayfairDisplay-Regular;
+}
+
+.input-container {
+    width: 100%;
+    max-width: 300px; /* Adjust as needed */
+    margin-bottom: 20px; /* Adjust as needed */
+    top: 0;
+}
+
+.input-container input {
+    width: 100%;
+    height: 40px; /* Adjust as needed */
+    padding: 10px;
+    /* Add other styles */
+}
+.first-name-text,
+.last-name-text,
+.email-text,
+.password-text{
+    background-color: white;
+    color: black;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: large;
+}
+.submit-button{
+    position: relative;
+    top: 100%;
+    width: 70%;
+    transform: translateX(27%);
+    border-radius: 0%;
+}
+
+
+
