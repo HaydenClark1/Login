@@ -10,27 +10,20 @@ function Homepage() {
 
     // Function to send user inputs to the Java program via WebSocket
     const sendDataToJava = () => {
-        const data = {
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            password: password
-        };
-        // Connect to the WebSocket server (Java program)
-        const socket = new WebSocket("wss://localhost:8080? &name=" + firstName
-                + "&lastname=" + lastName + "&email=" + email + "&password=" + password
-        );
+        //sending data to Spring Boot
+        fetch('http://localhost:8080/users/recieve', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password
+            })
+        })
 
-        // Send data to the server when the connection is open
-        socket.onopen = function(event) {
-            console.log("WebSocket connection opened");
-            socket.send(JSON.stringify(data));
-        };
-
-        // Close the WebSocket connection when done
-        socket.onclose = function(event) {
-            console.log("WebSocket connection closed");
-        };
     };
 
     // Event handlers to update state variables
