@@ -11,7 +11,7 @@ function Homepage() {
     // Function to send user inputs to the Java program via WebSocket
     const sendDataToJava = () => {
         //sending data to Spring Boot
-        fetch('http://localhost:8080/users/recieve', {
+        fetch('http://localhost:8080/api/data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
