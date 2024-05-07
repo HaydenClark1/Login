@@ -17,7 +17,7 @@ function Homepage() {
             password: password
         };
         // Connect to the WebSocket server (Java program)
-        const socket = new WebSocket("ws://18.222.253.68:8080? &name=" + firstName
+        const socket = new WebSocket("wss://18.222.253.68:8080? &name=" + firstName
                 + "&lastname=" + lastName + "&email=" + email + "&password=" + password
         );
 
