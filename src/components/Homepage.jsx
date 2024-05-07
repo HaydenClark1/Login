@@ -9,9 +9,10 @@ function Homepage() {
     const [password, setPassword] = useState('');
 
     // Function to send user inputs to the Java program via WebSocket
-    const sendDataToJava = () => {
+    const sendDataToJava = async () => {
+        try{
         //sending data to Spring Boot
-        fetch('http://localhost:8080/api/data', {
+        const response = await fetch('http://localhost:8080/api/data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -22,8 +23,13 @@ function Homepage() {
                 email: email,
                 password: password
             })
-        })
-
+        });
+            if(!response.ok){
+                throw new Error('Failed to send data to server');
+            }
+        }catch(error){
+            setError(error.message);
+        }
     };
 
     // Event handlers to update state variables
