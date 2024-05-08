@@ -12,7 +12,7 @@ function Login() {
     const sendDataToJava = async () => {
         try{
         //sending data to Spring Boot
-        const response = await fetch('http://localhost:8080/api/v1/user', {
+        const response = await fetch('http://18.222.253.68:8080/api/v1/user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
