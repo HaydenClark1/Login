@@ -10,26 +10,23 @@ function Login() {
 
     // Function to send user inputs to the Java program via WebSocket
     const sendDataToJava = async () => {
-        try{
-        //sending data to Spring Boot
-        const response = await fetch('https://18.222.253.68:8080/api/v1/user', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST",'https://18.222.253.68:8080/api/v1/user');
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            const body = JSON.stringify({
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
                 password: password
-            })
-        });
-            if(!response.ok){
-                throw new Error('Failed to send data to server');
-            }
-        }catch(error){
-            console.log(error);
-        }
+            });
+            xhr.onload = () =>{
+                if (xhr.readyState == 4 && xhr.status == 201) {
+                    console.log(JSON.parse(xhr.responseText));
+                  } else {
+                    console.log(`Error: ${xhr.status}`);
+                  }
+            };
+            xhr.send(body);
     };
 
     // Event handlers to update state variables
