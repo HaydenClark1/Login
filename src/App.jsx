@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import Homepage from './components/Homepage'
+import Login from './components/Login'
 
 function App() {
 
   return (
    <>
    <div>
-      <Homepage />
+      <Login />
    </div>
    </>
   )

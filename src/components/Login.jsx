@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import '../style/Homepage.css';
+import '../style/Login.css';
 
-function Homepage() {
+function Login() {
     // State variables to store user inputs
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -28,7 +28,7 @@ function Homepage() {
                 throw new Error('Failed to send data to server');
             }
         }catch(error){
-            setError(error.message);
+            console.log(error);
         }
     };
 
