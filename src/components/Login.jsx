@@ -3,17 +3,17 @@ import '../style/Login.css';
 
 function Login() {
     // State variables to store user inputs
-    firstName;
-    lastName;
-    email;
-    password;
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
 
     // Function to send user inputs to the Java program via WebSocket
     const sendDataToJava = async () => {
             const xhr = new XMLHttpRequest();
             xhr.open("POST",'https://3.144.149.240:8080/api/v1/user');
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.setRequestHeader("Content-Type", "application/json");
             const body = JSON.stringify({
                 firstName: firstName,
                 lastName: lastName,
@@ -32,20 +32,19 @@ function Login() {
 
     // Event handlers to update state variables
     const handleFirstNameChange = (event) => {
-        firstName=event.target.value;
-        console.log(firstName);
+        setFirstName(event.target.value);
     };
 
     const handleLastNameChange = (event) => {
-        lastName = (event.target.value);
+        setLastName(event.target.value);
     };
 
     const handleEmailChange = (event) => {
-        email = (event.target.value);
+        setEmail(event.target.value);
     };
 
     const handlePasswordChange = (event) => {
-        password = (event.target.value);
+        setPassword(event.target.value);
     };
 
     // Event handler for form submission
