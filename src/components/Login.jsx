@@ -3,10 +3,11 @@ import '../style/Login.css';
 
 function Login() {
     // State variables to store user inputs
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    firstName;
+    lastName;
+    email;
+    password;
+
 
     // Function to send user inputs to the Java program via WebSocket
     const sendDataToJava = async () => {
@@ -31,19 +32,20 @@ function Login() {
 
     // Event handlers to update state variables
     const handleFirstNameChange = (event) => {
-        setFirstName(event.target.value);
+        firstName=event.target.value;
+        console.log(firstName);
     };
 
     const handleLastNameChange = (event) => {
-        setLastName(event.target.value);
+        lastName = (event.target.value);
     };
 
     const handleEmailChange = (event) => {
-        setEmail(event.target.value);
+        email = (event.target.value);
     };
 
     const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
+        password = (event.target.value);
     };
 
     // Event handler for form submission
