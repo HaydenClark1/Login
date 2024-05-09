@@ -11,7 +11,7 @@ function Login() {
     // Function to send user inputs to the Java program via WebSocket
     const sendDataToJava = async () => {
             const xhr = new XMLHttpRequest();
-            xhr.open("POST",'http://18.222.253.68:8080/api/v1/user');
+            xhr.open("POST",'https://18.222.253.68:8080/api/v1/user');
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             const body = JSON.stringify({
                 firstName: firstName,
