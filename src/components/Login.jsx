@@ -36,9 +36,17 @@ function Login() {
     const handlePasswordChange = (event) => setPassword(event.target.value);
 
     const handleSubmit = () => {
-        const user = {firstName, lastName, email, password};
-        signin(user);
-    }
+        signin({ firstName, lastName, email, password })
+          .then(response => {
+            if (response.error) {
+              alert(response.error); // Display the error message to the user
+            } else {
+              alert('User created successfully!');
+            }
+          })
+          .catch(err => console.error('Fetch error:', err));
+      };
+      
 
     return (
         <div className="homepage">
