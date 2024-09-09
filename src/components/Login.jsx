@@ -12,7 +12,7 @@ function Login() {
     // Function to send user inputs to the Java program via WebSocket
     const sendDataToJava = async () => {
             const xhr = new XMLHttpRequest();
-            xhr.open("POST",'https://52.14.21.237:8080/api/v1/user');
+            xhr.open("POST",'http://localhost:8443/api/v1/user');
             xhr.setRequestHeader("Content-Type", "application/json");
             const body = JSON.stringify({
                 firstName: firstName,
@@ -21,7 +21,7 @@ function Login() {
                 password: password
             });
             xhr.onload = () =>{
-                if (xhr.readyState == 4 && xhr.status == 201) {
+                if (xhr.readyState == 4 && xhr.status == 200) {
                     console.log(JSON.parse(xhr.responseText));
                   } else {
                     console.log(`Error: ${xhr.status}`);
