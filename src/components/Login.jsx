@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import '../style/Login.css';
+import axios from 'axios';
+
+const apiUrl = 'http://localhost:8443/api/v1/user';
 
 function Login() {
     // State variables to store user inputs
@@ -8,26 +11,19 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-
-    // Function to send user inputs to the Java program via WebSocket
+    // Function to send user inputs to the Java program via axios
     const sendDataToJava = async () => {
-            const xhr = new XMLHttpRequest();
-            xhr.open("POST",'http://localhost:8443/api/v1/user');
-            xhr.setRequestHeader("Content-Type", "application/json");
-            const body = JSON.stringify({
+        try {
+            const response = await axios.post(apiUrl, {
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
                 password: password
             });
-            xhr.onload = () =>{
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    console.log(JSON.parse(xhr.responseText));
-                  } else {
-                    console.log(`Error: ${xhr.status}`);
-                  }
-            };
-            xhr.send(body);
+            console.log(response.data); // Handle response data
+        } catch (error) {
+            console.error('Error sending data:', error); // Handle errors
+        }
     };
 
     // Event handlers to update state variables
