@@ -10,6 +10,7 @@ function Login() {
 
     const signin = user => {
         console.log('user', user);
+        console.log(JSON.stringify(user));
         return fetch('http://localhost:8443/api/v1/user', { // Ensure this URL is correct
           method: 'POST',
           headers: {
