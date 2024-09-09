@@ -22,8 +22,8 @@ function Login() {
             };
             const response = await axios.post(apiUrl, data, {
                 headers: {
-                    'Content-Type': 'application/json',
-                },
+                    'Access-Control-Allow-Origin': '*',
+                    Accept: 'application/json',                },
                 withCredentials: true // Ensure credentials are included if necessary
             });
             console.log(response.data); // Handle response data
