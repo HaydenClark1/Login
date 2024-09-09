@@ -38,6 +38,7 @@ function Login() {
     const handleSubmit = () => {
         signin({ firstName, lastName, email, password })
           .then(response => {
+            console.log(response.error)
             if (response.error) {
               alert(response.error); // Display the error message to the user
             } else {
