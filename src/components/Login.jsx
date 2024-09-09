@@ -10,32 +10,27 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const sendDataToJava = async () => {
-        try {
-            const data = {
-                firstName,
-                lastName,
-                email,
-                password
-            };
-            const response = await axios.post(apiUrl, data, {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                withCredentials: true
-            });
-            console.log(response.data);
-        } catch (error) {
-            console.error('Error sending data:', error);
-        }
-    };
+    const signin = user => {
+        console.log('user', user);
+        return fetch('/api/v1/user', {
+          method: 'POST',
+          credentials: 'include',
+          body: JSON.stringify(user),
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        })
+        .then(response => response.json())
+        .catch(err => console.log(err));
+      };
+      
 
     const handleFirstNameChange = (event) => setFirstName(event.target.value);
     const handleLastNameChange = (event) => setLastName(event.target.value);
     const handleEmailChange = (event) => setEmail(event.target.value);
     const handlePasswordChange = (event) => setPassword(event.target.value);
 
-    const handleSubmit = () => sendDataToJava();
+    const handleSubmit = () => signin();
 
     return (
         <div className="homepage">
