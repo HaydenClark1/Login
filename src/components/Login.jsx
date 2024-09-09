@@ -5,54 +5,37 @@ import axios from 'axios';
 const apiUrl = 'http://localhost:8443/api/v1/user';
 
 function Login() {
-    // State variables to store user inputs
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    // Function to send user inputs to the Java program via axios
     const sendDataToJava = async () => {
         try {
             const data = {
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                password: password
+                firstName,
+                lastName,
+                email,
+                password
             };
             const response = await axios.post(apiUrl, data, {
                 headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    Accept: 'application/json',                },
-                withCredentials: true // Ensure credentials are included if necessary
+                    'Content-Type': 'application/json',
+                },
+                withCredentials: true
             });
-            console.log(response.data); // Handle response data
+            console.log(response.data);
         } catch (error) {
-            console.error('Error sending data:', error); // Handle errors
+            console.error('Error sending data:', error);
         }
     };
 
-    // Event handlers to update state variables
-    const handleFirstNameChange = (event) => {
-        setFirstName(event.target.value);
-    };
+    const handleFirstNameChange = (event) => setFirstName(event.target.value);
+    const handleLastNameChange = (event) => setLastName(event.target.value);
+    const handleEmailChange = (event) => setEmail(event.target.value);
+    const handlePasswordChange = (event) => setPassword(event.target.value);
 
-    const handleLastNameChange = (event) => {
-        setLastName(event.target.value);
-    };
-
-    const handleEmailChange = (event) => {
-        setEmail(event.target.value);
-    };
-
-    const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
-    };
-
-    // Event handler for form submission
-    const handleSubmit = () => {
-        sendDataToJava(); // Send user inputs to the Java program
-    };
+    const handleSubmit = () => sendDataToJava();
 
     return (
         <div className="homepage">
@@ -91,7 +74,7 @@ function Login() {
                     placeholder="Password"
                     value={password}
                     onChange={handlePasswordChange}
-                />  
+                />
             </div>
             <div className='input-container'>
                 <button
