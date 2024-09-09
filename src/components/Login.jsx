@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import '../style/Login.css';
-import axios from 'axios';
 
-const apiUrl = 'http://localhost:8443';
 
 function Login() {
     const [firstName, setFirstName] = useState('');
