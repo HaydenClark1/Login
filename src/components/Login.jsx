@@ -12,7 +12,7 @@ function Login() {
 
     const signin = user => {
         console.log('user', user);
-        return fetch('/api/v1/user', {
+        return fetch('https://loginsub.netlify.app/', {
           method: 'POST',
           credentials: 'include',
           body: JSON.stringify(user),
