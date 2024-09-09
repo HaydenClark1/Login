@@ -14,15 +14,18 @@ function Login() {
     // Function to send user inputs to the Java program via axios
     const sendDataToJava = async () => {
         try {
-            const response = await axios.post(apiUrl, {
+            data = {
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
                 password: password
-            },{
-                withCredentials: true
             }
-            );
+            const response = await axios.post(apiUrl, data, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                withCredentials: true // Fixed syntax error here
+            });
             console.log(response.data); // Handle response data
         } catch (error) {
             console.error('Error sending data:', error); // Handle errors
