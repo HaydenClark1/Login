@@ -20,7 +20,7 @@ function Login() {
                 email: email,
                 password: password
             },{
-                withCredentials: true
+                withCredentials: false
             }
             );
             console.log(response.data); // Handle response data
