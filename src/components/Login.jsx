@@ -19,7 +19,10 @@ function Login() {
                 lastName: lastName,
                 email: email,
                 password: password
-            });
+            },{
+                withCredentials: true
+            }
+            );
             console.log(response.data); // Handle response data
         } catch (error) {
             console.error('Error sending data:', error); // Handle errors
