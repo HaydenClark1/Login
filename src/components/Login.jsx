@@ -12,17 +12,23 @@ function Login() {
 
     const signin = user => {
         console.log('user', user);
-        return fetch('https://loginsub.netlify.app/', {
+        return fetch('https://loginsub.netlify.app', { // Ensure this URL is correct
           method: 'POST',
-          credentials: 'include',
-          body: JSON.stringify(user),
           headers: {
             'Content-Type': 'application/json',
-          }
+          },
+          body: JSON.stringify(user),
+          credentials: 'include', // Ensure credentials are included if necessary
         })
-        .then(response => response.json())
-        .catch(err => console.log(err));
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .catch(err => console.log(err));
       };
+      
       
 
     const handleFirstNameChange = (event) => setFirstName(event.target.value);
