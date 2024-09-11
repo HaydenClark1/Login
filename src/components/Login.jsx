@@ -36,10 +36,10 @@ function Login({closeLoginModal}) {
     };
 
     const handleSignIn = () =>{
-        signin({email, password })
+        signin({email, password})
         .then(data => {
-          const {firstName, lastName } = data;
-          navigate('/',{state: {firstName, lastName}});
+          const {firstName, lastName, id } = data;
+          navigate('/',{state: {firstName, lastName, id}});
         })
         .catch(err => {
           console.error('Fetch error:', err);
@@ -64,10 +64,11 @@ function Login({closeLoginModal}) {
                     <div className='email-container'>
                         <input
                             className="email-input"
-                            type="text"
+                            type="email"
                             placeholder="Email"
                             value={email}
                             onChange={handleEmail}
+                            required
                         />
                     </div>
                     <div className='password-container'>

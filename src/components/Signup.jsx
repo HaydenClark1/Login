@@ -98,7 +98,7 @@ function Signup({closeSignupModal,openLoginModal,isSignupOpen}) {
             <div className='input-container'>
                 <input
                     className='email-text'
-                    type="text"
+                    type="email"
                     placeholder="Email"
                     value={email}
                     onChange={handleEmailChange}
