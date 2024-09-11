@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-
+import '../style/Stats.css';
 import Modal from 'react-modal';
 
 
@@ -17,7 +17,7 @@ function Stats({closeStatsModal,userID}){
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify(userID), // Send the user data as JSON
+            body: JSON.stringify({ userID }), // Send the user data as JSON
             credentials: 'include', // Ensure credentials are included if necessary
         })
         .then(response => {
@@ -31,30 +31,45 @@ function Stats({closeStatsModal,userID}){
        
     }
 
-    const formatDate = (date) => {
-      const d = new Date(date);
-      return d.toLocaleString(); // Format to a readable date
-    };
+  // Define formatDate function
+  const formatDate = (date) => {
+    const d = new Date(date);
+    return d.toLocaleString(); // Format to a readable date
+};
 
-    useEffect(() =>{
-      getUserStats(userID);
-      console.log(location.state); // Check if lastLogin exists
-        if(location.state){
-            setTotalLogins(location.state.totalLogins);
-            setLastLogin(formatDate(location.state.lastLogin));
-        }
-
-    },[location.state]);
-
+    useEffect(() => {
+      // Fetch user stats from the API if userID is provided
+      if (userID) {
+        getUserStats(userID)
+          .then(data => {
+            console.log(data);
+            setTotalLogins(data.total_logins || 0);
+            setLastLogin(formatDate(data.last_login) || '');
+          })
+          .catch(err => {
+            console.error('Error fetching stats:', err);
+          });
+      }
+  
+      // If location.state is available, use it to set the state
+      if (location.state) {
+        setTotalLogins(location.state.total_logins || 0);
+        setLastLogin(formatDate(location.state.last_login) || '');
+      }
+    }, [userID, location.state]);
+  
     return (
         <>
-        <div className='Stats-container'>
+        <div className='stats-container-modal'>
             <h1 className='h1-stats'>Stats</h1>
             {totalLogins && lastLogin && (
                 <>
-                  <div className='stats'>
+                  <div className='stats-container'>
                       <div className='last-login'>
-                          <p>{lastLogin}</p>
+                          <p className='last-login-text'>Last Login: {lastLogin}</p>
+                      </div>
+                      <div className='total-logins'>
+                          <p className='total-logins-text'>Total Logins: {totalLogins}</p>
                       </div>
 
                   </div>

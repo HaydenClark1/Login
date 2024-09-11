@@ -1,0 +1,13 @@
+.stats-container{
+    display: flex;
+    flex-direction: column;
+    font-style:normal;
+    justify-content: center;
+    margin-top: 10px;
+}
+.last-login-text, .total-logins-text {
+    font-size: large;
+    font-family: 'PlayfairDisplay-Regular';
+    margin-bottom: 10px;
+}
+  
