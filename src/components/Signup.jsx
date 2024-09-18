@@ -13,7 +13,7 @@ function Signup({closeSignupModal,openLoginModal,isSignupOpen}) {
     const navigate = useNavigate(); // Get the navigate function
 
     const signin = (user) => {
-        return fetch('http://localhost:8443/api/v1/user', { // Ensure this URL is correct
+        return fetch('http://54.224.245.62:8443/api/v1/user', { // Ensure this URL is correct
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

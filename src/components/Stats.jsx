@@ -12,7 +12,7 @@ function Stats({closeStatsModal,userID}){
 
 
     const getUserStats = (userID) =>{
-        return fetch('http://localhost:8443/api/v1/stats', { // Ensure this URL is correct
+        return fetch('http://54.224.245.62:8443/api/v1/stats', { // Ensure this URL is correct
             method: 'POST', // Change to POST for login since you're sending credentials
             headers: {
               'Content-Type': 'application/json',

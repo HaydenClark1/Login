@@ -83,6 +83,7 @@ function HomePage() {
                         </ul>
                 </div>
                 )}
+                <h4></h4>
                 <h1 className='homepage-title'>Hayden Clark's Login Example</h1>
                 <div className='homepage-link'>
                     <button className='signup-button-homepage' onClick={openSignupModal}>Signup</button>

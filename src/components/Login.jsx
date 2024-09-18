@@ -14,7 +14,7 @@ function Login({closeLoginModal}) {
 
     const signin = (user) => {
         console.log(user);
-        return fetch('http://localhost:8443/api/v1/login', { // Ensure this URL is correct
+        return fetch('http://54.224.245.62/api/v1/login', { // Ensure this URL is correct
             method: 'POST', // Change to POST for login since you're sending credentials
             headers: {
               'Content-Type': 'application/json',
