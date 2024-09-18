@@ -88,6 +88,10 @@ function HomePage() {
                 <div className='homepage-link'>
                     <button className='signup-button-homepage' onClick={openSignupModal}>Signup</button>
                     <button className='login-button-homepage' onClick={openLoginModal}>Login</button>
+                    {/* Download Button */}
+                    <a href="/server.js" download="server.js">
+                        <button className='download-button-homepage'>Download server.js</button>
+                    </a>
                 </div>
             </div>
 
