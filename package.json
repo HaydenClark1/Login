@@ -10,8 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "archiver": "^7.0.1",
     "axios": "^1.7.7",
     "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "jszip": "^3.10.1",
     "login-project": "file:",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
