@@ -91,8 +91,8 @@ function HomePage() {
                     {/* Download Button */}
                     <a href="/server.js" download="server.js">
                         <button className='download-button-homepage'>Download server.js</button>
-                        <p>Make sure that you have Node and Express installed in termina when running</p>
                     </a>
+                    <p>Make sure that you have Node and Express installed in terminal when running</p>
                 </div>
             </div>
 
